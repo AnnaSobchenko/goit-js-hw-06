@@ -1,22 +1,17 @@
-let counterValue = +document.querySelector("#value.textContent");
-const vvvv=document.querySelector("#value")
-console.log(vvvv);
+const valueEl=document.querySelector("#value");
+const counterEl=document.querySelector("#counter")
 
-const buttonDecr = document.querySelector(
-    "button[data-action='decrement']")
-const buttonIncr = document.querySelector(
-    "button[data-action='increment']")
+let counterValue = 0;
 
-const handleClickDecr = () => {   
-   return  counterValue -= 1;
-    // console.log(counterValue);    
-};
-const handleClickIncr = () => {    
-    return counterValue += 1;
-    // console.log(counterValue);
-}    
+counterEl.addEventListener("click", handleClick)
 
-buttonDecr.addEventListener("click", handleClickDecr);
-buttonIncr.addEventListener("click", handleClickIncr);
-
-console.log(vvvv.textContent=counterValue);
+function handleClick(event) {
+    if (event.target.tagName === "BUTTON") {
+        if (event.target.attributes["data-action"].value === "increment") {
+            counterValue += 1;
+        } else {
+            counterValue -= 1;
+        }
+        valueEl.innerHTML = counterValue;
+        }
+    }
